@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { addProduct } = require('../controllers/productController');
+const { addProduct, getproducts, getProductById } = require('../controllers/productController');
 const upload = require('../config/multer');
-const { auth } = require('../middleware/auth');
-const { adminOnly } = require('../middleware/roleAuth');
+const { auth, isAdmin } = require('../middleware/auth');
 
-router.post('/', auth, adminOnly, upload.array('images', 5), addProduct);
+router.post('/', auth, isAdmin, upload.array('images', 5), addProduct);
+router.get('/', getproducts);
+router.get('/:productId', getProductById);
 
 module.exports = router;
