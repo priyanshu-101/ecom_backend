@@ -22,7 +22,6 @@ router.get('/my-orders', getUserOrders);                 // Get user's orders
 router.get('/:orderId', getOrder);                       // Get specific order
 router.patch('/:orderId/cancel', cancelOrder);           // Cancel order
 
-
 router.get('/', isAdmin, getAllOrders);                  // Get all orders (admin)
 router.get('/stats/overview', isAdmin, getOrderStats);   // Get order statistics (admin)
 router.patch('/:orderId/status', isAdmin, updateOrderStatus);     // Update order status (admin)
